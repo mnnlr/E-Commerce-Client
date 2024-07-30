@@ -22,7 +22,8 @@ const MakePayment = ({totalAmount, totalItems, formData}) => {
             'Authorization': `Bearer ${user?.token}`
           };
     
-          const {data, status}= await axios.post('https://diwali-e-commerce-backend-n2a2.onrender.com/order/saveorder', body, { headers });
+          // const {data, status}= await axios.post('https://diwali-e-commerce-backend-n2a2.onrender.com/order/saveorder', body, { headers });
+          const {data, status}= await axios.post('http://localhost:8000/order/saveorder', body, { headers });
     
           console.log('this is data', data)
           if (status !== 200) {
