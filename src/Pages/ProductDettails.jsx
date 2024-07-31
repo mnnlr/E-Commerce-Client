@@ -4,6 +4,7 @@ import axios from "axios";
 import useFetch from "../hooks/fetchhook";
 import { useCart } from "../Contexts/CartContext";
 import { useUser } from "../Contexts/UserContext";
+import { defaultAxios } from "../CustomAxios/defaultAxios";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -47,8 +48,8 @@ const ProductDetails = () => {
     };
 
     try {
-      await axios.put(
-        `https://diwali-e-commerce-backend-n2a2.onrender.com/cart`,
+      await defaultAxios.put(
+        `/cart`,
         {},
         { params: { id }, headers }
       );

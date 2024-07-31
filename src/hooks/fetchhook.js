@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '../Contexts/UserContext';
-// import { defaultAxios } from '../custom_axios/custom_axios';
+import { defaultAxios } from '../CustomAxios/defaultAxios';
+
 import axios from 'axios';
 const useFetch = (path,options={}) => {
     const {skip} = options;
@@ -19,7 +20,7 @@ const useFetch = (path,options={}) => {
     const fetchData = async () => {
       try {
 
-        const {data,status} = await axios.get(`https://diwali-e-commerce-backend-n2a2.onrender.com/${path}`,{
+        const {data,status} = await defaultAxios.get(`/${path}`,{
                     signal: controller.signal,
                     params: Params,
                     withCredentials: true,
