@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Product from "../components/ClothingCard";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { defaultAxios } from "../CustomAxios/defaultAxios";
 
 const ProductListing = () => {
   const { state } = useLocation();
@@ -13,8 +14,8 @@ const ProductListing = () => {
         "Content-Type": "application/json",
       };
 
-      const { status, data } = await axios.get(
-        "https://diwali-e-commerce-backend-n2a2.onrender.com/clothing",
+      const { status, data } = await defaultAxios.get(
+        "/clothing",
         { params: { categoryName: state?.parameter }, headers }
       );
       if (status === 200) {
